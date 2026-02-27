@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav>
-    <div class="logo">Code For ME</div>
+<nav class="top-nav">
+    <a class="logo" href="/">Code For ME</a>
     <div class="nav-links">
         <a href="/student/home">Student</a>
         <a href="/teacher/home">Teacher</a>
@@ -19,7 +19,7 @@
     </div>
 </nav>
 
-<main>
+<main class="page-wrap {% block page_class %}{% endblock %}">
     {% block content %}{% endblock %}
 </main>
 

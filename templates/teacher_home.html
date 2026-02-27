@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+<section class="hero card">
+    <h1>Welcome, {{ name }} 👩‍🏫</h1>
+    <p>Build classes, publish lessons, and track student growth.</p>
+</section>
 
-<h1>Welcome, {{ name }} </h1>
-<p class="subtitle">Manage classrooms and lessons</p>
-
-<div class="grid">
-    <div class="tile action">Create Classroom</div>
-    <div class="tile action">Create Lesson</div>
-</div>
+<section class="grid teacher-actions">
+    <div class="tile action"><h3>Create Classroom</h3><p>Set up students, goals, and tracks.</p></div>
+    <div class="tile action"><h3>Create Lesson</h3><p>Publish reading, videos, and quizzes.</p></div>
+</section>
 
 <a href="/logout" class="logout">Log out</a>
-
 {% endblock %}
