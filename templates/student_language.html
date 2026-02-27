@@ -1,0 +1,17 @@
+<div class="roadmap">
+    {% for lesson in lessons %}
+        {% if lesson.id in completed %}
+            <div class="bubble completed"></div>
+
+        {% elif lesson.id == (completed|length + 1) %}
+            <a href="/student/lesson/{{ lang }}/{{ lesson.id }}"
+               class="bubble active">
+               {{ lesson.id }}
+            </a>
+
+        {% else %}
+            <div class="bubble locked">{{ lesson.id }}</div>
+        {% endif %}
+    {% endfor %}
+</div>
+

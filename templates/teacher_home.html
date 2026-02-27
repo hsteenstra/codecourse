@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome, {{ name }} </h1>
+<p class="subtitle">Manage classrooms and lessons</p>
+
+<div class="grid">
+    <div class="tile action">Create Classroom</div>
+    <div class="tile action">Create Lesson</div>
+</div>
+
+<a href="/logout" class="logout">Log out</a>
+
+{% endblock %}

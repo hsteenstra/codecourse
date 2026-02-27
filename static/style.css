@@ -1,0 +1,256 @@
+/* ===============================
+   GLOBAL RESET + BASE
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: white;
+    background:
+        radial-gradient(circle at top left, #7f5af0, transparent 40%),
+        radial-gradient(circle at bottom right, #2cb67d, transparent 40%),
+        linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.2rem;
+    opacity: 0.85;
+}
+
+/* ===============================
+   LAYOUT
+================================ */
+
+main {
+    padding: 3rem;
+}
+
+.center {
+    max-width: 900px;
+    margin: 6rem auto 0;
+}
+
+/* ===============================
+   CARDS / GLASS
+================================ */
+
+.card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(22px);
+    padding: 2.5rem;
+    border-radius: 24px;
+    box-shadow: 0 0 50px rgba(127,90,240,0.35);
+}
+
+.glow {
+    animation: glowPulse 6s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from { box-shadow: 0 0 30px rgba(127,90,240,0.4); }
+    to   { box-shadow: 0 0 60px rgba(44,182,125,0.5); }
+}
+
+/* ===============================
+   FORMS / BUTTONS
+================================ */
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.9rem;
+    margin-top: 0.7rem;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.4rem;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+button.primary {
+    background: linear-gradient(135deg, #7f5af0, #2cb67d);
+    color: white;
+}
+
+/* ===============================
+   LANGUAGE GRID
+================================ */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+}
+
+.tile {
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(14px);
+    border-radius: 22px;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tile:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 30px rgba(127,90,240,0.35);
+}
+
+.tile.complete {
+    border: 2px solid #2cb67d;
+}
+
+a.tile {
+    text-decoration: none;
+    color: white;
+}
+
+/* ===============================
+   ROADMAP (DUOLINGO STYLE)
+================================ */
+
+.roadmap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+a.bubble {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* COMPLETED */
+.bubble.completed {
+    background: #2cb67d;
+    box-shadow: 0 0 25px rgba(44,182,125,0.7);
+}
+
+/* UNLOCKED / NEXT */
+.bubble.active {
+    background: linear-gradient(135deg, #7f5af0, #9b5de5);
+    box-shadow: 0 0 30px rgba(155,93,229,0.75);
+    animation: pulse 2.5s infinite;
+}
+
+/* LOCKED */
+.bubble.locked {
+    background: #555;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+/* ===============================
+   LESSON VIEW
+================================ */
+
+.lesson-card {
+    max-width: 720px;
+    margin: 3rem auto 0;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(20px);
+    padding: 3rem;
+    border-radius: 26px;
+}
+
+.lesson-card h2 {
+    margin-bottom: 1rem;
+}
+
+.lesson-card p {
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* ===============================
+   VIDEO SECTION
+================================ */
+
+.video-placeholder {
+    margin: 2.2rem 0;
+    padding: 2.5rem;
+    border-radius: 18px;
+    background: rgba(0,0,0,0.35);
+    text-align: center;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+/* ===============================
+   QUIZ
+================================ */
+
+.choice {
+    display: block;
+    margin: 0.8rem 0;
+}
+
+.success {
+    color: #2cb67d;
+    font-size: 1.7rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+/* ===============================
+   CONFETTI CANVAS
+================================ */
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+}

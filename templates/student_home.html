@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Welcome, {{ name }} 👋</h1>
+<p class="subtitle">Choose a language to start learning</p>
+
+<div class="grid">
+    <a href="/student/language/python" class="tile">Python</a>
+    <div class="tile locked">HTML</div>
+    <div class="tile locked">CSS</div>
+    <div class="tile locked">JavaScript</div>
+    <div class="tile locked">C++</div>
+</div>
+
+{% endblock %}

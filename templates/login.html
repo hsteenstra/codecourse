@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card center glow">
+    <h1>Code For ME</h1>
+    <p class="subtitle">Your path into computer science</p>
+
+    <form method="post">
+        <input name="name" placeholder="Full Name" required>
+        <input placeholder="Username">
+        <input type="email" placeholder="Email">
+
+        <select name="role" required>
+            <option disabled selected>Select role</option>
+            <option>Student</option>
+            <option>Teacher</option>
+        </select>
+
+        <button class="primary">Enter Platform</button>
+    </form>
+</div>
+
+{% endblock %}

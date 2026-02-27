@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ lesson.title }}</h1>
+
+<div class="lesson-card">
+
+{% if correct %}
+    <h2 class="success">✅ Correct!</h2>
+    <p>You’ve completed this lesson 🎉</p>
+
+    <canvas id="confetti"></canvas>
+
+    <a href="/student/language/{{ lang }}">
+        <button class="primary">Continue</button>
+    </a>
+
+{% else %}
+    <h2> Reading</h2>
+    <p>{{ lesson.reading }}</p>
+
+    <h2> Video</h2>
+    <div class="video-placeholder">
+        {{ lesson.video }}
+    </div>
+
+    <h2> Quiz</h2>
+    <form method="post">
+        <p>{{ lesson.quiz.question }}</p>
+
+        {% for choice in lesson.quiz.choices %}
+            <label class="choice">
+                <input type="radio" name="answer" value="{{ choice }}" required>
+                {{ choice }}
+            </label>
+        {% endfor %}
+
+        <button class="primary">Submit Answer</button>
+    </form>
+{% endif %}
+
+</div>
+
+{% if correct %}
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+confetti({
+    particleCount: 180,
+    spread: 100,
+    origin: { y: 0.6 }
+});
+</script>
+{% endif %}
+
+{% endblock %}
