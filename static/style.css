@@ -1,256 +1,313 @@
-/* ===============================
-   GLOBAL RESET + BASE
-================================ */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    min-height: 100vh;
-    font-family: 'Inter', sans-serif;
-    color: white;
-    background:
-        radial-gradient(circle at top left, #7f5af0, transparent 40%),
-        radial-gradient(circle at bottom right, #2cb67d, transparent 40%),
-        linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+:root {
+    --bg-deep: #1f1a4f;
+    --bg-mid: #2b2b7a;
+    --bg-soft: #2f5aa8;
+    --panel: rgba(255, 255, 255, 0.2);
+    --panel-strong: rgba(255, 255, 255, 0.28);
+    --line: rgba(255, 255, 255, 0.35);
+    --text: #f8fbff;
+    --muted: #e6ebff;
+    --purple: #8b5cf6;
+    --pink: #ff70b8;
+    --aqua: #35d4c0;
+    --sun: #ffd166;
+    --green: #58cc02;
+    --green-dark: #3e9800;
 }
 
-/* ===============================
-   NAVBAR
-================================ */
+body {
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 112, 184, 0.34), transparent 33%),
+        radial-gradient(circle at 82% 18%, rgba(53, 212, 192, 0.28), transparent 36%),
+        radial-gradient(circle at 50% 88%, rgba(139, 92, 246, 0.32), transparent 45%),
+        linear-gradient(155deg, var(--bg-deep), var(--bg-mid) 55%, var(--bg-soft));
+}
 
-nav {
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 2rem;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(14px);
+    padding: 1rem 2rem;
+    background: rgba(18, 18, 54, 0.45);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
 }
 
 .logo {
-    font-size: 1.6rem;
-    font-weight: 800;
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: var(--sun);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
 }
 
 .nav-links a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
-    margin-left: 1.2rem;
-    opacity: 0.85;
+    font-weight: 800;
+    opacity: 0.95;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* ===============================
-   LAYOUT
-================================ */
-
-main {
-    padding: 3rem;
+.nav-links a:hover {
+    transform: translateY(-1px);
+    opacity: 1;
 }
 
-.center {
-    max-width: 900px;
-    margin: 6rem auto 0;
+.page-wrap {
+    padding: 2rem;
+    max-width: 1050px;
+    margin: 0 auto;
 }
 
-/* ===============================
-   CARDS / GLASS
-================================ */
+.auth-page {
+    min-height: calc(100vh - 75px);
+    display: grid;
+    place-items: center;
+}
 
-.card {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(22px);
-    padding: 2.5rem;
+.auth-shell {
+    width: min(560px, 100%);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.auth-header h1 {
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    font-weight: 900;
+    color: var(--sun);
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.auth-header p {
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.card,
+.auth-card,
+.lesson-card {
+    background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+    border: 1px solid var(--line);
     border-radius: 24px;
-    box-shadow: 0 0 50px rgba(127,90,240,0.35);
+    box-shadow: 0 16px 40px rgba(15, 10, 44, 0.35);
 }
 
-.glow {
-    animation: glowPulse 6s infinite alternate;
+.auth-card {
+    padding: 1.4rem;
 }
 
-@keyframes glowPulse {
-    from { box-shadow: 0 0 30px rgba(127,90,240,0.4); }
-    to   { box-shadow: 0 0 60px rgba(44,182,125,0.5); }
+.auth-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
 }
 
-/* ===============================
-   FORMS / BUTTONS
-================================ */
+.switch-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 0.7rem;
+    font-weight: 900;
+    color: #2f2d73;
+    background: #f6f0ff;
+}
+
+.switch-btn.active {
+    color: white;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+}
+
+.auth-form,
+.quiz-form {
+    display: grid;
+    gap: 0.8rem;
+}
 
 input, select, textarea {
     width: 100%;
-    padding: 0.9rem;
-    margin-top: 0.7rem;
+    border: 2px solid transparent;
     border-radius: 14px;
-    border: none;
+    padding: 0.9rem 1rem;
+    font: inherit;
+    font-weight: 700;
+    color: #2c2e66;
+    background: #f8f7ff;
+}
+
+input:focus, select:focus, textarea:focus {
     outline: none;
-    font-size: 1rem;
+    border-color: var(--aqua);
 }
 
 button {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 1.4rem;
-    border-radius: 14px;
     border: none;
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+    font: inherit;
+    font-weight: 900;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 1rem;
 }
 
 button.primary {
-    background: linear-gradient(135deg, #7f5af0, #2cb67d);
     color: white;
+    background: linear-gradient(135deg, var(--purple), var(--pink));
+    border-bottom: 4px solid #7d3cdf;
 }
 
-/* ===============================
-   LANGUAGE GRID
-================================ */
+.hero {
+    padding: 1.4rem;
+    margin-bottom: 1.1rem;
+}
+
+.hero p {
+    color: var(--muted);
+    font-weight: 700;
+}
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.8rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
 }
 
 .tile {
-    background: rgba(255,255,255,0.14);
-    backdrop-filter: blur(14px);
-    border-radius: 22px;
-    padding: 2rem;
-    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    color: var(--text);
+    background: rgba(23, 26, 84, 0.48);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 1rem;
+    min-height: 130px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tile:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 30px rgba(127,90,240,0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(11, 9, 39, 0.3);
 }
 
-.tile.complete {
-    border: 2px solid #2cb67d;
+.tile h3 { margin-bottom: 0.4rem; }
+.tile p { color: var(--muted); font-weight: 700; }
+
+.tile.featured {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.75), rgba(255, 112, 184, 0.7));
 }
 
-a.tile {
-    text-decoration: none;
-    color: white;
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: var(--sun);
+    color: #48386e;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-bottom: 0.4rem;
 }
 
-/* ===============================
-   ROADMAP (DUOLINGO STYLE)
-================================ */
+.tile.locked {
+    opacity: 0.6;
+}
 
 .roadmap {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    margin-top: 4rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.2rem;
 }
 
-a.bubble {
-    width: 78px;
-    height: 78px;
+.bubble {
+    width: 76px;
+    height: 76px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
     font-size: 1.25rem;
-    font-weight: 800;
     text-decoration: none;
     color: white;
-    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* COMPLETED */
-.bubble.completed {
-    background: #2cb67d;
-    box-shadow: 0 0 25px rgba(44,182,125,0.7);
-}
-
-/* UNLOCKED / NEXT */
-.bubble.active {
-    background: linear-gradient(135deg, #7f5af0, #9b5de5);
-    box-shadow: 0 0 30px rgba(155,93,229,0.75);
-    animation: pulse 2.5s infinite;
-}
-
-/* LOCKED */
-.bubble.locked {
-    background: #555;
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-@keyframes pulse {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.08); }
-    100% { transform: scale(1); }
-}
-
-/* ===============================
-   LESSON VIEW
-================================ */
+.bubble.completed { background: var(--green); }
+.bubble.active { background: linear-gradient(135deg, var(--purple), var(--pink)); box-shadow: 0 0 0 9px rgba(255, 112, 184, 0.24); }
+.bubble.locked { background: #8f93bd; opacity: 0.55; }
 
 .lesson-card {
-    max-width: 720px;
-    margin: 3rem auto 0;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(20px);
-    padding: 3rem;
-    border-radius: 26px;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 1.6rem;
 }
 
 .lesson-card h2 {
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 0.4rem;
 }
-
-.lesson-card p {
-    line-height: 1.7;
-    opacity: 0.9;
-}
-
-/* ===============================
-   VIDEO SECTION
-================================ */
 
 .video-placeholder {
-    margin: 2.2rem 0;
-    padding: 2.5rem;
-    border-radius: 18px;
-    background: rgba(0,0,0,0.35);
-    text-align: center;
-    font-weight: 600;
-    opacity: 0.85;
+    background: rgba(56, 77, 148, 0.45);
+    border: 1px dashed rgba(255,255,255,0.4);
+    border-radius: 14px;
+    padding: 1.2rem;
 }
 
-/* ===============================
-   QUIZ
-================================ */
-
 .choice {
-    display: block;
-    margin: 0.8rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    padding: 0.65rem;
+    border-radius: 10px;
 }
 
 .success {
-    color: #2cb67d;
-    font-size: 1.7rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
+    color: #bbff79;
 }
 
-/* ===============================
-   CONFETTI CANVAS
-================================ */
+.assignment {
+    margin-top: 0.8rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-weight: 800;
+}
+
+.assignment.complete { background: rgba(88,204,2,0.24); }
+.assignment.pending { background: rgba(255,209,102,0.24); }
+
+.contact-card {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 1.4rem;
+}
+
+.logout {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--sun);
+    font-weight: 800;
+}
 
 #confetti {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 999;
 }

@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
+<section class="hero card">
+    <h1>Welcome back, {{ name }} 👋</h1>
+    <p>Pick a path and keep your streak alive.</p>
+</section>
 
-<h1>Welcome, {{ name }} 👋</h1>
-<p class="subtitle">Choose a language to start learning</p>
-
-<div class="grid">
-    <a href="/student/language/python" class="tile">Python</a>
-    <div class="tile locked">HTML</div>
-    <div class="tile locked">CSS</div>
-    <div class="tile locked">JavaScript</div>
-    <div class="tile locked">C++</div>
-</div>
-
+<section class="grid">
+    <a href="/student/language/python" class="tile featured">
+        <span class="badge">Recommended</span>
+        <h3>Python</h3>
+        <p>Start with core syntax and build real projects.</p>
+    </a>
+    <div class="tile locked"><h3>HTML</h3><p>Locked until Python progress.</p></div>
+    <div class="tile locked"><h3>CSS</h3><p>Locked until Python progress.</p></div>
+    <div class="tile locked"><h3>JavaScript</h3><p>Locked until Python progress.</p></div>
+    <div class="tile locked"><h3>C++</h3><p>Locked until Python progress.</p></div>
+</section>
 {% endblock %}

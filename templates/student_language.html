@@ -1,17 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero card">
+    <h1>{{ lang|capitalize }} Roadmap</h1>
+    <p>Complete each circle to unlock the next lesson.</p>
+</section>
+
 <div class="roadmap">
     {% for lesson in lessons %}
         {% if lesson.id in completed %}
-            <div class="bubble completed"></div>
-
+            <div class="bubble completed">✓</div>
         {% elif lesson.id == (completed|length + 1) %}
-            <a href="/student/lesson/{{ lang }}/{{ lesson.id }}"
-               class="bubble active">
-               {{ lesson.id }}
-            </a>
-
+            <a href="/student/lesson/{{ lang }}/{{ lesson.id }}" class="bubble active">{{ lesson.id }}</a>
         {% else %}
             <div class="bubble locked">{{ lesson.id }}</div>
         {% endif %}
     {% endfor %}
 </div>
-
+{% endblock %}
